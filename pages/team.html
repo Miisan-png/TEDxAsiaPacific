@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - TEDxAsiaPacificU</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        .team-year-selector {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .year-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background: linear-gradient(135deg, #e62b1e, #ff4136);
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(230, 43, 30, 0.3);
+        }
+
+        .dropdown-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 43, 30, 0.4);
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-button.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            margin-top: 10px;
+        }
+
+        .dropdown-content.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border-radius: 15px;
+            color: #333;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f9fa;
+        }
+
+        .dropdown-item.active {
+            background: #e62b1e;
+            color: white;
+        }
+
+        .team-department {
+            margin-bottom: 4rem;
+        }
+
+        .team-department h2 {
+            font-size: 2.5rem;
+            color: #ff2b06;
+            margin-bottom: 1rem;
+            border-left: 4px solid #ff2b06;
+            padding-left: 1rem;
+        }
+
+        .team-lead {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member-card {
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 43, 6, 0.1);
+            border-color: rgba(255, 43, 6, 0.2);
+        }
+
+        .team-member-avatar {
+            width: 200px;
+            height: 250px;
+            background: #333;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .team-member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member-quote {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .project-manager .team-member-card {
+            border: 2px solid #ff2b06;
+        }
+
+        .project-manager .team-member-avatar {
+            width: 220px;
+            height: 280px;
+        }
+
+        .project-manager h3 {
+            color: #ff2b06;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .team-member-card {
+                padding: 1.5rem;
+            }
+            
+            .team-member-avatar {
+                width: 180px;
+                height: 220px;
+            }
+            
+            .project-manager .team-member-avatar {
+                width: 200px;
+                height: 250px;
+            }
+        }
+
+        .loading {
+            background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+            background-size: 200% 100%;
+            animation: loading 2s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">TEDx<span>AsiaPacificU</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <a href="contact.html" class="cta-button">Buy Tickets</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Meet the Team</h1>
+                <p>A diverse, international team of over 40 student volunteers making this event possible.</p>
+            </div>
+        </section>
+
+        <section class="team-year-selector">
+            <div class="container">
+                <div class="year-dropdown">
+                    <button class="dropdown-button" id="yearButton">
+                        <span>TEDx 2025 Team</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content" id="yearDropdown">
+                        <div class="dropdown-item active" data-year="2025">TEDx 2025 Team</div>
+                        <div class="dropdown-item" data-year="2026">TEDx 2026 Team</div>
+                        <div class="dropdown-item" data-year="2027">TEDx 2027 Team</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="team-department project-manager">
+                    <h2>Project Manager / License Holder</h2>
+                    <div class="team-grid">
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/rafa_islam_diba.jpg" alt="Rafa Islam Diba" loading="lazy">
+                            </div>
+                            <h3>Rafa Islam Diba</h3>
+                            <p class="team-member-quote">Leading with passion, inspiring through action, and believing that every great idea starts with a single spark.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-department">
+                    <h2>Curation Team</h2>
+                    <p class="team-lead">Lead: Azar Ali Shaikh</p>
+                    <div class="team-grid">
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/kazi_zahra_ahmed.jpg" alt="Kazi Zahra Ahmed" loading="lazy">
+                            </div>
+                            <h3>Kazi Zahra Ahmed</h3>
+                            <p class="team-member-quote">Every story deserves to be heard, and every voice has the power to change perspectives.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/ummu_kulsum_mahmud.jpg" alt="Ummu Kulsum Mahmud" loading="lazy">
+                            </div>
+                            <h3>Ummu Kulsum Mahmud</h3>
+                            <p class="team-member-quote">In the art of curation, we find the perfect balance between creativity and purpose.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/wong_yong_jien.jpg" alt="Wong Yong Jien" loading="lazy">
+                            </div>
+                            <h3>Wong Yong Jien</h3>
+                            <p class="team-member-quote">Ideas worth spreading start with minds worth opening.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/zeti_qurshiah_binti_juhari.jpg" alt="Zeti Qurshiah Binti Juhari" loading="lazy">
+                            </div>
+                            <h3>Zeti Qurshiah Binti Juhari</h3>
+                            <p class="team-member-quote">Diversity in thought creates the most beautiful tapestry of human experience.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/hamza_abduljabar.jpg" alt="Hamza Abduljabar" loading="lazy">
+                            </div>
+                            <h3>Hamza Abduljabar</h3>
+                            <p class="team-member-quote">Behind every great presentation lies hours of passionate curation and careful selection.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/charvi_sirigiri.jpg" alt="Charvi Sirigiri" loading="lazy">
+                            </div>
+                            <h3>Charvi Sirigiri</h3>
+                            <p class="team-member-quote">The magic happens when we connect ideas that were never meant to meet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-department">
+                    <h2>Logistics & Operations</h2>
+                    <p class="team-lead">Lead: Genemor Muyangana</p>
+                    <div class="team-grid">
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/david_kalunga_menshi.jpg" alt="David Kalunga Menshi" loading="lazy">
+                            </div>
+                            <h3>David Kalunga Menshi</h3>
+                            <p class="team-member-quote">Excellence in execution turns great ideas into unforgettable experiences.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/voorishta_gopaul.jpg" alt="Voorishta Gopaul" loading="lazy">
+                            </div>
+                            <h3>Voorishta Gopaul</h3>
+                            <p class="team-member-quote">In the symphony of event management, every detail plays its perfect note.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/khizar_hameed.jpg" alt="Khizar Hameed" loading="lazy">
+                            </div>
+                            <h3>Khizar Hameed</h3>
+                            <p class="team-member-quote">Smooth operations are the invisible foundation of extraordinary events.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/ammar_mohammed.jpg" alt="Ammar Mohammed" loading="lazy">
+                            </div>
+                            <h3>Ammar Mohammed</h3>
+                            <p class="team-member-quote">Logistics is the art of making the impossible look effortless.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/ahmed_shaik_tazuddin.jpg" alt="Ahmed Shaik Tazuddin" loading="lazy">
+                            </div>
+                            <h3>Ahmed Shaik Tazuddin</h3>
+                            <p class="team-member-quote">Great events are built on the foundation of meticulous planning and flawless execution.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/ahmed_tamer.jpg" alt="Ahmed Tamer" loading="lazy">
+                            </div>
+                            <h3>Ahmed Tamer</h3>
+                            <p class="team-member-quote">Every challenge in logistics is an opportunity to innovate and excel.</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">
+                                <img src="../images/team_photos/2025/abdul_muqeet.jpg" alt="Abdul Muqeet" loading="lazy">
+                            </div>
+                            <h3>Abdul Muqeet</h3>
+                            <p class="team-member-quote">Precision in planning creates the magic that audiences remember forever.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearButton = document.getElementById('yearButton');
+            const yearDropdown = document.getElementById('yearDropdown');
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            
+            yearButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                yearButton.classList.toggle('active');
+                yearDropdown.classList.toggle('show');
+            });
+            
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const year = this.dataset.year;
+                    const teamName = this.textContent;
+                    
+                    yearButton.querySelector('span').textContent = teamName;
+                    
+                    dropdownItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    yearButton.classList.remove('active');
+                    yearDropdown.classList.remove('show');
+                    
+                    if (year !== '2025') {
+                        alert(`${teamName} data will be available soon!`);
+                    }
+                });
+            });
+            
+            document.addEventListener('click', function() {
+                yearButton.classList.remove('active');
+                yearDropdown.classList.remove('show');
+            });
+            
+            const images = document.querySelectorAll('.team-member-avatar img');
+            images.forEach(img => {
+                const avatar = img.parentElement;
+                avatar.classList.add('loading');
+                
+                img.addEventListener('load', function() {
+                    avatar.classList.remove('loading');
+                });
+                
+                img.addEventListener('error', function() {
+                    avatar.classList.remove('loading');
+                    this.src = '../images/team_photos/placeholder.jpg';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
