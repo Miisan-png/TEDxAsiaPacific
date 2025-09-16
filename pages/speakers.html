@@ -6,33 +6,93 @@
     <title>Speakers - TEDxAsiaPacificU</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+  .speakers-grid-full{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+  }
+
+  .speaker-card{
+    background:#111;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    transition:all .3s ease;
+    overflow:hidden;
+  }
+  .speaker-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(235,0,40,.1);
+    border-color:rgba(235,0,40,.2);
+  }
+
+  .speaker-avatar{
+    width:100%;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    border-radius:0;
+    margin-bottom:1rem;
+  }
+  .speaker-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    border:0;
+    border-radius:0;
+    display:block;
+  }
+
+  @media (max-width:768px){
+    .speaker-avatar{aspect-ratio:4/5}
+  }
+
+  .speaker-avatar img[alt="Dr. Milan LaBrey"]{
+    object-position:center 2%;
+    transform:scale(.95);
+  }
+  .speaker-avatar img[alt="Dr. Mohammed Al-Obaydee"]{
+    object-position:center 5%;
+  }
+  .speaker-avatar img[alt="Assoc. Prof. Ts. Dr. Tan Chin Ike"]{
+    object-position:center 5%;
+  }
+  .speaker-avatar img[alt="Zhao Xiang Teh"]{
+    object-position:center 5%;
+  }
+  .speaker-avatar img[alt="Suresh Sankaran Srinivasan"]{
+    object-position:center 5%;
+  }
+  .speaker-avatar img[alt="Prashasth Baliga"]{
+    object-position:center 5%;
+    transform:scale(.95);
+  }
+</style>
+
 </head>
-  <div class="burger">
-    <div class="line1"></div>
-    <div class="line2"></div>
-    <div class="line3"></div>
-    </div>  
 <body>
     <header>
         <nav class="container">
-    <a href="../index.html" class="logo">TEDx<span>AsiaPacificU</span></a>
-    <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="speakers.html">Speakers</a></li>
-        <li><a href="schedule.html">Schedule</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="contact.html" class="cta-button">Buy Tickets</a>
-</nav>
+            <a href="../index.html" class="logo">TEDx<span>AsiaPacificU</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="tickets.html" class="cta-button">Buy Tickets</a>
+        </nav>
     </header>
 
     <main>
         <section class="page-header">
             <div class="container">
                 <h1>Meet Our Speakers</h1>
-                <p>A diverse lineup of speakers sharing their ideas on the theme of "Beyond the Surface".</p>
+                <p>A diverse lineup of speakers sharing ideas on the theme of "Beneath the Surface".</p>
             </div>
         </section>
 
@@ -40,52 +100,73 @@
             <div class="container">
                 <div class="speakers-grid-full">
                     <div class="speaker-card">
-                        <div class="speaker-avatar" style="background-image: url('https://via.placeholder.com/120');"></div>
-                        <h3 class="speaker-name">Speaker Name 1</h3>
-                        <p class="speaker-title">Sample Topic: “Lost Languages: Why Preserving Dying Tongues Might Save Humanity”</p>
+                        <div class="speaker-avatar"><img src="../assets/images/Speaker%20Headshots/Milan%20Devi.jpg" alt="Dr. Milan LaBrey"></div>
+                        <h3 class="speaker-name">Dr. Milan LaBrey</h3>
+                        <p class="speaker-title">Global Chair, Values & Volunteerism (G100) | Founder, TAEI Academy</p>
+                        <p class="speaker-bio">Psychology professor and author championing values-based learning and purposeful change.</p>
                     </div>
+
                     <div class="speaker-card">
-                        <div class="speaker-avatar" style="background-image: url('https://via.placeholder.com/120');"></div>
-                        <h3 class="speaker-name">Speaker Name 2</h3>
-                        <p class="speaker-title">Sample Topic: “The Myth of the Lone Genius”</p>
+                        <div class="speaker-avatar"><img src="../assets/images/Speaker%20Headshots/obaydee.jpg" alt="Dr. Mohammed Al-Obaydee"></div>
+                        <h3 class="speaker-name">Dr. Mohammed Al-Obaydee</h3>
+                        <p class="speaker-title">Senior Data Scientist | HRD Corp Accredited Trainer | Founder, AIC4ALL</p>
+                        <p class="speaker-bio">AI educator and industry leader helping organizations upskill and adopt practical AI.</p>
                     </div>
+
                     <div class="speaker-card">
-                        <div class="speaker-avatar" style="background-image: url('https://via.placeholder.com/120');"></div>
-                        <h3 class="speaker-name">Speaker Name 3</h3>
-                        <p class="speaker-title">Sample Topic: “What Trash Says About Us: The Anthropology of Waste”</p>
+                        <div class="speaker-avatar"><img src="../assets/images/Speaker%20Headshots/zhao%20xiang.jpg" alt="Zhao Xiang Teh"></div>
+                        <h3 class="speaker-name">Zhao Xiang Teh</h3>
+                        <p class="speaker-title">Trainer | NLP Practitioner | National Public Speaking Finalist</p>
+                        <p class="speaker-bio">Guides youths to turn discomfort into confidence through actionable communication skills.</p>
                     </div>
+
                     <div class="speaker-card">
-                        <div class="speaker-avatar" style="background-image: url('https://via.placeholder.com/120');"></div>
-                        <h3 class="speaker-name">Speaker Name 4</h3>
-                        <p class="speaker-title">Sample Topic: “Digital Afterlife: Who Owns Your Data When You’re Gone?”</p>
+                        <div class="speaker-avatar"><img src="../assets/images/Speaker%20Headshots/dr%20ike.jpg" alt="Assoc. Prof. Ts. Dr. Tan Chin Ike"></div>
+                        <h3 class="speaker-name">Assoc. Prof. Ts. Dr. Tan Chin Ike</h3>
+                        <p class="speaker-title">Head of School, APU | Gamification & Game Dev Advocate</p>
+                        <p class="speaker-bio">Educator bridging academia and industry to grow Malaysia’s game and tech talent.</p>
                     </div>
+
                     <div class="speaker-card">
-                        <div class="speaker-avatar" style="background-image: url('https://via.placeholder.com/120');"></div>
-                        <h3 class="speaker-name">Speaker Name 5</h3>
-                        <p class="speaker-title">Sample Topic: “The Hidden Cost of Convenience”</p>
+                        <div class="speaker-avatar"><img src="../assets/images/Speaker%20Headshots/Suresh.jpg" alt="Suresh Sankaran Srinivasan"></div>
+                        <h3 class="speaker-name">Suresh Sankaran Srinivasan</h3>
+                        <p class="speaker-title">Cybersecurity Leader | Adjunct Professor | Board Advisor</p>
+                        <p class="speaker-bio">Leads large-scale cyber resilience and innovation across complex digital ecosystems.</p>
                     </div>
+
                     <div class="speaker-card">
-                        <div class="speaker-avatar" style="background-image: url('https://via.placeholder.com/120');"></div>
-                        <h3 class="speaker-name">Speaker Name 6</h3>
-                        <p class="speaker-title">Sample Topic: “The Algorithm is Watching”</p>
+                        <div class="speaker-avatar"><img src="../assets/images/Speaker%20Headshots/Shanice%20Wong.jpeg" alt="Shanice Wong"></div>
+                        <h3 class="speaker-name">Shanice Wong</h3>
+                        <p class="speaker-title">HRD Corp Accredited Trainer | Youth Coach | Public Speaker</p>
+                        <p class="speaker-bio">Helps people communicate with authenticity and confidence in work and life.</p>
                     </div>
-                     <div class="speaker-card">
-                        <div class="speaker-avatar" style="background-image: url('https://via.placeholder.com/120');"></div>
-                        <h3 class="speaker-name">Speaker Name 7</h3>
-                        <p class="speaker-title">Sample Topic: “Quiet Power: What We Miss About Introverts”</p>
-                    </div>
+
                     <div class="speaker-card">
-                        <div class="speaker-avatar" style="background-image: url('https://via.placeholder.com/120');"></div>
-                        <h3 class="speaker-name">Speaker Name 8</h3>
-                        <p class="speaker-title">Sample Topic: “Decolonizing the Mind: Language, Power & Memory”</p>
+                        <div class="speaker-avatar"><img src="../assets/images/Speaker%20Headshots/Prashasth%20Baliga.png" alt="Prashasth Baliga"></div>
+                        <h3 class="speaker-name">Prashasth Baliga</h3>
+                        <p class="speaker-title">Senior Cybersecurity Leader | CISSP</p>
+                        <p class="speaker-bio">Drives secure solutions for global enterprises and advocates for cyber awareness.</p>
+                    </div>
+
+                    <div class="speaker-card">
+                        <div class="speaker-avatar"><img src="../assets/images/Speaker%20Headshots/Chari.jpg" alt="Chari"></div>
+                        <h3 class="speaker-name">Chari</h3>
+                        <p class="speaker-title">Speaker</p>
+                        <p class="speaker-bio">Sharing a perspective that inspires action and community impact.</p>
+                    </div>
+
+                    <div class="speaker-card">
+                        <div class="speaker-avatar"><img src="../assets/images/Speaker%20Headshots/Li%20Ying%20Tay.jpg" alt="Li Ying Tay"></div>
+                        <h3 class="speaker-name">Li Ying Tay</h3>
+                        <p class="speaker-title">Data Analyst Lead | Public Speaking Coach | National Public Speaking Finalist</p>
+                        <p class="speaker-bio">Transforms data into stories and empowers others to embrace their authentic voices.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="contact">
-        </footer>
-    <script src="script.js"></script>
+    <footer id="contact"></footer>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>

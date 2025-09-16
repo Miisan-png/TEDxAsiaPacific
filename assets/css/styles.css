@@ -116,6 +116,254 @@ footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 1px solid rgba(2
 }
 
 
+.speaker-avatar {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+
+.speaker-avatar img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 0;
+    border: none;
+}
+
+.speaker-avatar img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0;
+    border: none;
+}
+
+
+
+/* Speaker-specific adjustments */
+.speaker-avatar img[alt="Dr. Milan LaBrey"] {
+    object-position: center 2%; /* push down */
+    transform: scale(0.95);      /* zoom out slightly */
+}
+
+.speaker-avatar img[alt="Dr. Mohammed Al-Obaydee"] {
+    object-position: center 5%; /* push down */
+}
+
+.speaker-avatar img[alt="Assoc. Prof. Ts. Dr. Tan Chin Ike"] {
+    object-position: center 5%; /* push down */
+}
+
+.speaker-avatar img[alt="Zhao Xiang Teh"] {
+    object-position: center 5%; /* push down */
+}
+
+.speaker-avatar img[alt="Suresh Sankaran Srinivasan"] {
+    object-position: center 5%; /* push down */
+}
+
+.speaker-avatar img[alt="Prashasth Baliga"] {
+    object-position: center 5%; /* push down */
+    transform: scale(0.95);      /* zoom out slightly */
+}
+
+/* Speakers: responsive, consistent image frames */
+.speakers-grid,
+.speakers-grid-full{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.speaker-card{
+  background:#111;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.speaker-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 40px rgba(235,0,40,.1);
+  border-color:rgba(235,0,40,.2);
+}
+
+/* Use aspect-ratio on the frame so images scale cleanly on mobile */
+.speaker-avatar{
+  width:100%;
+  aspect-ratio:16/10;
+  border-radius:0;
+  overflow:hidden;
+}
+
+.speaker-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  border:0;
+  border-radius:0;
+}
+
+/* Taller crop on small screens for better composition */
+@media (max-width: 768px){
+  .speaker-avatar{aspect-ratio:4/5}
+}
+
+/* Speaker-specific nudges */
+.speaker-avatar img[alt="Dr. Milan LaBrey"]{
+  object-position:center 2%;
+  transform:scale(.95);
+}
+
+.speaker-avatar img[alt="Dr. Mohammed Al-Obaydee"]{
+  object-position:center 5%;
+}
+
+.speaker-avatar img[alt="Assoc. Prof. Ts. Dr. Tan Chin Ike"]{
+  object-position:center 5%;
+}
+
+.speaker-avatar img[alt="Zhao Xiang Teh"]{
+  object-position:center 5%;
+}
+
+.speaker-avatar img[alt="Suresh Sankaran Srinivasan"]{
+  object-position:center 5%;
+}
+
+.speaker-avatar img[alt="Prashasth Baliga"]{
+  object-position:center 5%;
+  transform:scale(.95);
+}
+
+/* Speaker Cards - Grid */
+.speakers-grid-full {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* Card Container */
+.speaker-card {
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.speaker-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(235,0,40,0.1);
+  border-color: rgba(235,0,40,0.2);
+}
+
+/* Image Wrapper */
+.speaker-avatar {
+  width: 100%;
+  aspect-ratio: 16 / 10;   /* keeps a wide ratio on desktop */
+  overflow: hidden;
+  border-radius: 0;
+  margin-bottom: 1rem;
+}
+
+.speaker-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  border: none;
+}
+
+/* On small screens, use portrait-ish ratio */
+@media (max-width: 768px) {
+  .speaker-avatar {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+<style>
+  .speakers-grid-full{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+  }
+
+  .speaker-card{
+    background:#111;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    transition:all .3s ease;
+    overflow:hidden;
+  }
+  .speaker-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(235,0,40,.1);
+    border-color:rgba(235,0,40,.2);
+  }
+
+  .speaker-avatar{
+    width:100%;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    border-radius:0;
+    margin-bottom:1rem;
+  }
+  .speaker-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    border:0;
+    border-radius:0;
+    display:block;
+  }
+
+  @media (max-width:768px){
+    .speaker-avatar{aspect-ratio:4/5}
+  }
+
+  .speaker-avatar img[alt="Dr. Milan LaBrey"]{
+    object-position:center 2%;
+    transform:scale(.95);
+  }
+  .speaker-avatar img[alt="Dr. Mohammed Al-Obaydee"]{
+    object-position:center 5%;
+  }
+  .speaker-avatar img[alt="Assoc. Prof. Ts. Dr. Tan Chin Ike"]{
+    object-position:center 5%;
+  }
+  .speaker-avatar img[alt="Zhao Xiang Teh"]{
+    object-position:center 5%;
+  }
+  .speaker-avatar img[alt="Suresh Sankaran Srinivasan"]{
+    object-position:center 5%;
+  }
+  .speaker-avatar img[alt="Prashasth Baliga"]{
+    object-position:center 5%;
+    transform:scale(.95);
+  }
+</style>
+
+
+
+
+
+
 /* Mobile Navigation - Complete Fix */
 @media (max-width: 768px) {
     .nav-links {
