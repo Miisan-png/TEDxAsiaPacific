@@ -1,369 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEDxAsiaPacificU</title>
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        .speaker-slider{position:relative;overflow:hidden}
-        .speaker-track{display:flex;will-change:transform;transition:transform .6s ease}
-        .speaker-slide{flex:0 0 auto;padding:1rem}
-        .speaker-controls{display:flex;justify-content:space-between;align-items:center;margin-top:1rem}
-        .speaker-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(4px);padding:.6rem 1rem;border-radius:999px;cursor:pointer;font-weight:600}
-        .speaker-dots{display:flex;gap:.4rem}
-        .speaker-dot{width:.5rem;height:.5rem;border-radius:999px;background:rgba(255,255,255,.25)}
-        .speaker-dot.active{background:#ff2b06}
-        @media (min-width:1024px){.speaker-slide{width:33.3333%}}
-        @media (min-width:640px) and (max-width:1023px){.speaker-slide{width:50%}}
-        @media (max-width:639px){.speaker-slide{width:100%}}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEDxAsiaPacificU</title>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    .speaker-slider{position:relative;overflow:hidden}
+    .speaker-track{display:flex;will-change:transform;transition:transform .6s ease}
+    .speaker-slide{flex:0 0 auto;padding:1rem}
+    .speaker-controls{display:flex;justify-content:space-between;align-items:center;margin-top:1rem}
+    .speaker-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(4px);padding:.6rem 1rem;border-radius:999px;cursor:pointer;font-weight:600}
+    .speaker-dots{display:flex;gap:.4rem}
+    .speaker-dot{width:.5rem;height:.5rem;border-radius:999px;background:rgba(255,255,255,.25)}
+    .speaker-dot.active{background:#ff2b06}
+    @media (min-width:1024px){.speaker-slide{width:33.3333%}}
+    @media (min-width:640px) and (max-width:1023px){.speaker-slide{width:50%}}
+    @media (max-width:639px){.speaker-slide{width:100%}}
+
+    /* Ensure cloned cards look correct in slider if page CSS loads later */
+    .speaker-slide .speaker-card{height:100%}
+    .speaker-slide .speaker-avatar{aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#0c0c0c}
+    .speaker-slide .speaker-avatar img{width:100%;height:100%;object-fit:cover;object-position:var(--obj-x,50%) var(--obj-y,50%);transform:translateY(var(--shiftY,0)) scale(var(--scale,1))}
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="./index.html" class="logo">TEDx<span>AsiaPacificU</span></a>
-            <ul class="nav-links">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="pages/about.html">About</a></li>
-                <li><a href="pages/speakers.html">Speakers</a></li>
-                <li><a href="pages/schedule.html">Schedule</a></li>
-                <li><a href="pages/team.html">Team</a></li>
-                <li><a href="pages/contact.html">Contact</a></li>
-            </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-            <a href="pages/tickets.html" class="cta-button">Buy Tickets</a>
-        </nav>
-    </header>
-
-    <div class="burger">
+  <header>
+    <nav class="container">
+      <a href="./index.html" class="logo">TEDx<span>AsiaPacificU</span></a>
+      <ul class="nav-links">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/speakers.html">Speakers</a></li>
+        <li><a href="pages/schedule.html">Schedule</a></li>
+        <li><a href="pages/team.html">Team</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+      </ul>
+      <div class="burger" id="burger">
         <div class="line1"></div>
         <div class="line2"></div>
         <div class="line3"></div>
-    </div>
-
-    <main>
-        <section class="hero" id="hero">
-            <div class="floating-elements">
-                <div class="float-element"></div>
-                <div class="float-element"></div>
-                <div class="float-element"></div>
-            </div>
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Beneath the Surface</h1>
-                    <p>Join us for an inspiring journey of innovation, creativity, and transformative ideas that will shape the future.</p>
-                    <div class="hero-buttons">
-                        <a href="pages/tickets.html" class="primary-btn">Get Your Ticket</a>
-                        <a href="pages/speakers.html" class="secondary-btn">Meet Speakers</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="event-info" id="about-preview">
-  <div class="container">
-    <h2 class="section-title">About The Event</h2>
-    <p class="section-subtitle">This is the first time APU will host a TEDx event of this scale, with the goal of inspiring dialogue, igniting curiosity, and building a community centered around meaningful ideas.</p>
-    <div class="event-grid">
-      <div class="event-card">
-        <div class="event-icon"></div>
-        <h3>When</h3>
-        <p>18th October 2025<br>10:00 AM - 5:00 PM</p>
       </div>
+      <a href="pages/tickets.html" class="cta-button">Buy Tickets</a>
+    </nav>
+  </header>
 
-      <div class="event-card" id="where-card" style="position:relative">
-        <div class="event-icon"></div>
-        <h3>Where</h3>
-        <p>Auditorium 1, Level 7<br>Asia Pacific University (APU)</p>
-        <div style="display:flex;gap:.6rem;margin-top:.6rem">
-          <a href="https://maps.google.com/?q=Asia+Pacific+University+of+Technology+%26+Innovation" target="_blank" rel="noopener" class="primary-btn" style="padding:.5rem .9rem;font-size:.9rem">Open in Google Maps</a>
-          <button id="previewMapBtn" class="secondary-btn" style="padding:.5rem .9rem;font-size:.9rem">Preview Map</button>
-        </div>
-        <div id="mapPopover" style="position:absolute;right:0;top:100%;margin-top:.75rem;width:360px;max-width:85vw;height:220px;background:#000;border:1px solid rgba(255,255,255,.15);border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.45);opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s ease,transform .2s ease;z-index:5">
-          <iframe title="APU Map" src="https://www.google.com/maps?q=Asia+Pacific+University+of+Technology+%26+Innovation&output=embed" width="100%" height="100%" style="border:0"></iframe>
+  <main>
+    <section class="hero" id="hero">
+      <div class="floating-elements">
+        <div class="float-element"></div>
+        <div class="float-element"></div>
+        <div class="float-element"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <h1>Beneath the Surface</h1>
+          <p>Join us for an inspiring journey of innovation, creativity, and transformative ideas that will shape the future.</p>
+          <div class="hero-buttons">
+            <a href="pages/tickets.html" class="primary-btn">Get Your Ticket</a>
+            <a href="pages/speakers.html" class="secondary-btn">Meet Speakers</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="event-card">
-        <div class="event-icon"></div>
-        <h3>Theme</h3>
-        <p>"Beneath the Surface"<br>Ideas Worth Spreading</p>
+    <section class="event-info" id="about-preview">
+      <div class="container">
+        <h2 class="section-title">About The Event</h2>
+        <p class="section-subtitle">This is the first time APU will host a TEDx event of this scale, with the goal of inspiring dialogue, igniting curiosity, and building a community centered around meaningful ideas.</p>
+        <div class="event-grid">
+          <div class="event-card">
+            <div class="event-icon"></div>
+            <h3>When</h3>
+            <p>18th October 2025<br>10:00 AM - 5:00 PM</p>
+          </div>
+
+          <div class="event-card" id="where-card" style="position:relative">
+            <div class="event-icon"></div>
+            <h3>Where</h3>
+            <p>Auditorium 1, Level 7<br>Asia Pacific University (APU)</p>
+            <div style="display:flex;gap:.6rem;margin-top:.6rem">
+              <a href="https://maps.google.com/?q=Asia+Pacific+University+of+Technology+%26+Innovation" target="_blank" rel="noopener" class="primary-btn" style="padding:.5rem .9rem;font-size:.9rem">Open in Google Maps</a>
+              <button id="previewMapBtn" class="secondary-btn" style="padding:.5rem .9rem;font-size:.9rem">Preview Map</button>
+            </div>
+            <div id="mapPopover" style="position:absolute;right:0;top:100%;margin-top:.75rem;width:360px;max-width:85vw;height:220px;background:#000;border:1px solid rgba(255,255,255,.15);border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.45);opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s ease,transform .2s ease;z-index:5">
+              <iframe title="APU Map" src="https://www.google.com/maps?q=Asia+Pacific+University+of+Technology+%26+Innovation&output=embed" width="100%" height="100%" style="border:0"></iframe>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <div class="event-icon"></div>
+            <h3>Theme</h3>
+            <p>"Beneath the Surface"<br>Ideas Worth Spreading</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="mapModal" style="position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:50">
+        <div style="width:min(900px,92vw);height:min(560px,78vh);background:#0b0b0b;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;position:relative">
+          <button id="closeMapModal" style="position:absolute;right:10px;top:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;padding:.45rem .7rem;border-radius:10px;font-weight:600;cursor:pointer;z-index:2">Close</button>
+          <iframe title="APU Map Large" src="https://www.google.com/maps?q=Asia+Pacific+University+of+Technology+%26+Innovation&output=embed" width="100%" height="100%" style="border:0"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="speakers" id="speakers-preview">
+      <div class="container">
+        <h2 class="section-title">Featured Speakers</h2>
+        <p class="section-subtitle">A rotating glimpse of our lineup. See more on the speakers page.</p>
+
+        <div class="speaker-slider">
+          <div class="speaker-track"></div>
+        </div>
+        <div class="speaker-controls container" style="max-width:980px;margin-inline:auto">
+          <button class="speaker-btn" id="prevBtn">‹ Prev</button>
+          <div class="speaker-dots" id="dots"></div>
+          <button class="speaker-btn" id="nextBtn">Next ›</button>
+        </div>
+
+        <div class="view-all-container" style="margin-top:1rem">
+          <a href="pages/speakers.html" class="primary-btn">View All Speakers</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>TEDxAsiaPacificU</h3>
+          <p>This independent TEDx event is operated under license from TED. Our goal is to bring together bright minds to give talks that are idea-focused, and on a wide range of subjects, to foster learning, inspiration and wonder.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="pages/about.html">About</a></p>
+          <p><a href="pages/speakers.html">Speakers</a></p>
+          <p><a href="pages/schedule.html">Schedule</a></p>
+          <p><a href="pages/team.html">Our Team</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Project Manager / License Holder: <strong>Rafa Islam Diba</strong></p>
+          <p>For inquiries, please email the team at <a href="mailto:aputedtalkclub@gmail.com">aputedtalkclub@gmail.com</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <p><a href="#">Twitter</a></p>
+          <p><a href="#">LinkedIn</a></p>
+          <p><a href="#">Instagram</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TEDxAsiaPacificU. All Rights Reserved. This independent TEDx event is operated under license from TED.</p>
       </div>
     </div>
-  </div>
+  </footer>
 
-  <div id="mapModal" style="position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:50">
-    <div style="width:min(900px,92vw);height:min(560px,78vh);background:#0b0b0b;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;position:relative">
-      <button id="closeMapModal" style="position:absolute;right:10px;top:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;padding:.45rem .7rem;border-radius:10px;font-weight:600;cursor:pointer;z-index:2">Close</button>
-      <iframe title="APU Map Large" src="https://www.google.com/maps?q=Asia+Pacific+University+of+Technology+%26+Innovation&output=embed" width="100%" height="100%" style="border:0"></iframe>
-    </div>
-  </div>
-
+  <script src="assets/js/script.js"></script>
   <script>
-    const whereCard = document.getElementById('where-card');
-    const pop = document.getElementById('mapPopover');
-    const previewBtn = document.getElementById('previewMapBtn');
-    const modal = document.getElementById('mapModal');
-    const closeModal = document.getElementById('closeMapModal');
+    // Mobile nav toggle (uses existing CSS)
+    const burger = document.getElementById('burger');
+    const navLinks = document.querySelector('.nav-links');
+    if (burger && navLinks) {
+      burger.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-active');
+        burger.classList.toggle('toggle');
+      });
+    }
 
-    let hoverTimer;
-    whereCard.addEventListener('mouseenter', () => {
-      clearTimeout(hoverTimer);
-      pop.style.opacity = '1';
-      pop.style.pointerEvents = 'auto';
-      pop.style.transform = 'translateY(0)';
-    });
-    whereCard.addEventListener('mouseleave', () => {
-      hoverTimer = setTimeout(() => {
-        pop.style.opacity = '0';
-        pop.style.pointerEvents = 'none';
-        pop.style.transform = 'translateY(-8px)';
-      }, 120);
-    });
-    previewBtn.addEventListener('click', () => {
-      modal.style.display = 'flex';
-    });
-    closeModal.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.style.display = 'none';
+    // Map preview interactions
+    (function(){
+      const whereCard = document.getElementById('where-card');
+      const pop = document.getElementById('mapPopover');
+      const previewBtn = document.getElementById('previewMapBtn');
+      const modal = document.getElementById('mapModal');
+      const closeModal = document.getElementById('closeMapModal');
+      if (!whereCard) return;
+
+      let hoverTimer;
+      whereCard.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimer);
+        pop.style.opacity = '1';
+        pop.style.pointerEvents = 'auto';
+        pop.style.transform = 'translateY(0)';
+      });
+      whereCard.addEventListener('mouseleave', () => {
+        hoverTimer = setTimeout(() => {
+          pop.style.opacity = '0';
+          pop.style.pointerEvents = 'none';
+          pop.style.transform = 'translateY(-8px)';
+        }, 120);
+      });
+      previewBtn.addEventListener('click', () => { modal.style.display = 'flex'; });
+      closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
+      modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+    })();
+
+    // Featured Speakers slider
+    document.addEventListener('DOMContentLoaded', async function () {
+      const track = document.querySelector('.speaker-track');
+      const dotsWrap = document.getElementById('dots');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      function perView() {
+        const w = window.innerWidth;
+        if (w >= 1024) return 3;
+        if (w >= 640) return 2;
+        return 1;
+      }
+
+      function makeSlide(node) {
+        const slide = document.createElement('div');
+        slide.className = 'speaker-slide';
+        slide.appendChild(node);
+        const img = slide.querySelector('img');
+        if (img) img.loading = 'lazy';
+        return slide;
+      }
+
+      let cards = [];
+      try {
+        const res = await fetch('pages/speakers.html', { cache: 'no-cache' });
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        cards = Array.from(doc.querySelectorAll('.speakers-grid-full .speaker-card')).map(c => c.cloneNode(true));
+      } catch (e) {
+        console.warn('Failed to load speakers:', e);
+      }
+
+      if (!cards.length) {
+        const empty = document.createElement('p');
+        empty.style.opacity = .8;
+        empty.textContent = 'Speakers coming soon.';
+        track.parentElement.replaceWith(empty);
+        return;
+      }
+
+      let view = perView();
+      let index = 0;
+      let slides = [];
+      let timer;
+      let totalPages;
+
+      function build() {
+        view = perView();
+        track.style.transition = 'none';
+        track.innerHTML = '';
+        slides = [];
+
+        const clonesHead = [];
+        const clonesTail = [];
+
+        for (let i = 0; i < view; i++) clonesHead.push(makeSlide(cards[i % cards.length].cloneNode(true)));
+        for (let i = 0; i < view; i++) clonesTail.push(makeSlide(cards[(cards.length - view + i) % cards.length].cloneNode(true)));
+
+        clonesTail.forEach(s => track.appendChild(s));
+        cards.forEach(c => track.appendChild(makeSlide(c.cloneNode(true))));
+        clonesHead.forEach(s => track.appendChild(s));
+
+        slides = Array.from(track.children);
+        totalPages = Math.ceil(cards.length / view);
+
+        dotsWrap.innerHTML = '';
+        for (let i = 0; i < totalPages; i++) {
+          const d = document.createElement('div');
+          d.className = 'speaker-dot' + (i === 0 ? ' active' : '');
+          d.dataset.page = i;
+          dotsWrap.appendChild(d);
+        }
+
+        requestAnimationFrame(() => {
+          const start = view;
+          index = start;
+          translate();
+          requestAnimationFrame(() => track.style.transition = 'transform .6s ease');
+        });
+        resetTimer();
+      }
+
+      function slideWidth() {
+        return slides[0]?.getBoundingClientRect().width || 0;
+      }
+
+      function translate() {
+        const offset = -index * slideWidth();
+        track.style.transform = `translateX(${offset}px)`;
+        const page = ((index - view) / view + totalPages) % totalPages;
+        Array.from(dotsWrap.children).forEach((d, i) => d.classList.toggle('active', i === Math.floor(page)));
+      }
+
+      function next() { index += view; translate(); }
+      function prev() { index -= view; translate(); }
+
+      function resetIfCloned() {
+        const headStart = view + cards.length;
+        if (index >= headStart) {
+          track.style.transition = 'none';
+          index = view;
+          translate();
+          requestAnimationFrame(() => track.style.transition = 'transform .6s ease');
+        } else if (index < view) {
+          track.style.transition = 'none';
+          index = view + cards.length - (cards.length % view || view);
+          translate();
+          requestAnimationFrame(() => track.style.transition = 'transform .6s ease');
+        }
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, 5000);
+      }
+
+      track.addEventListener('transitionend', resetIfCloned);
+      nextBtn.addEventListener('click', () => { next(); resetTimer(); });
+      prevBtn.addEventListener('click', () => { prev(); resetTimer(); });
+      dotsWrap.addEventListener('click', e => {
+        if (e.target.classList.contains('speaker-dot')) {
+          const p = parseInt(e.target.dataset.page, 10);
+          index = view + p * view;
+          translate();
+          resetTimer();
+        }
+      });
+
+      let startX = 0, dragging = false, pid = 0;
+      track.addEventListener('pointerdown', e => {
+        dragging = true; startX = e.clientX; pid = e.pointerId;
+        track.setPointerCapture(pid);
+        clearInterval(timer);
+      });
+      track.addEventListener('pointermove', e => {
+        if (!dragging) return;
+        const dx = e.clientX - startX;
+        const base = -index * slideWidth();
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${base + dx}px)`;
+      });
+      function endDrag(e){
+        if (!dragging) return;
+        dragging = false;
+        const dx = e.clientX - startX;
+        track.style.transition = 'transform .6s ease';
+        if (Math.abs(dx) > slideWidth()/4) { if (dx < 0) next(); else prev(); }
+        else translate();
+        resetTimer();
+      }
+      track.addEventListener('pointerup', endDrag);
+      track.addEventListener('pointercancel', endDrag);
+      track.addEventListener('pointerleave', endDrag);
+
+      window.addEventListener('resize', () => {
+        const oldView = view;
+        build();
+        // Snap to the first page after rebuild for stability
+        index = view;
+        translate();
+      });
+
+      build();
     });
   </script>
-</section>
-
-
-        <section class="speakers" id="speakers-preview">
-            <div class="container">
-                <h2 class="section-title">Featured Speakers</h2>
-                <p class="section-subtitle">A rotating glimpse of our lineup. See more on the speakers page.</p>
-                <div class="speaker-slider">
-                    <div class="speaker-track"></div>
-                </div>
-                <div class="speaker-controls container" style="max-width:980px;margin-inline:auto">
-                    <button class="speaker-btn" id="prevBtn">‹ Prev</button>
-                    <div class="speaker-dots" id="dots"></div>
-                    <button class="speaker-btn" id="nextBtn">Next ›</button>
-                </div>
-                <div class="view-all-container" style="margin-top:1rem">
-                    <a href="pages/speakers.html" class="primary-btn">View All Speakers</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>TEDxAsiaPacificU</h3>
-                    <p>This independent TEDx event is operated under license from TED. Our goal is to bring together bright minds to give talks that are idea-focused, and on a wide range of subjects, to foster learning, inspiration and wonder.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <p><a href="pages/about.html">About</a></p>
-                    <p><a href="pages/speakers.html">Speakers</a></p>
-                    <p><a href="pages/schedule.html">Schedule</a></p>
-                    <p><a href="pages/team.html">Our Team</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p>Project Manager / License Holder: <strong>Rafa Islam Diba</strong></p>
-                    <p>For inquiries, please email the team at <a href="mailto:aputedtalkclub@gmail.com">aputedtalkclub@gmail.com</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <p><a href="#">Twitter</a></p>
-                    <p><a href="#">LinkedIn</a></p>
-                    <p><a href="#">Instagram</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 TEDxAsiaPacificU. All Rights Reserved. This independent TEDx event is operated under license from TED.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="assets/js/script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async function () {
-            const track = document.querySelector('.speaker-track');
-            const dotsWrap = document.getElementById('dots');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-
-            function perView() {
-                const w = window.innerWidth;
-                if (w >= 1024) return 3;
-                if (w >= 640) return 2;
-                return 1;
-            }
-
-            function makeSlide(node) {
-                const slide = document.createElement('div');
-                slide.className = 'speaker-slide';
-                slide.appendChild(node);
-                const img = slide.querySelector('img');
-                if (img) img.loading = 'lazy';
-                return slide;
-            }
-
-            let cards = [];
-            try {
-                const res = await fetch('pages/speakers.html', { cache: 'no-cache' });
-                const html = await res.text();
-                const doc = new DOMParser().parseFromString(html, 'text/html');
-                cards = Array.from(doc.querySelectorAll('.speakers-grid-full .speaker-card')).map(c => c.cloneNode(true));
-            } catch(e) {}
-
-            if (!cards.length) {
-                const empty = document.createElement('p');
-                empty.style.opacity = .8;
-                empty.textContent = 'Speakers coming soon.';
-                track.parentElement.replaceWith(empty);
-                return;
-            }
-
-            let view = perView();
-            let index = 0;
-            let slides = [];
-            let timer;
-            let totalPages;
-
-            function build() {
-                view = perView();
-                track.style.transition = 'none';
-                track.innerHTML = '';
-                slides = [];
-
-                const clonesHead = [];
-                const clonesTail = [];
-
-                for (let i = 0; i < view; i++) {
-                    clonesHead.push(makeSlide(cards[i % cards.length].cloneNode(true)));
-                }
-                for (let i = 0; i < view; i++) {
-                    const src = cards[(cards.length - view + i) % cards.length].cloneNode(true);
-                    clonesTail.push(makeSlide(src));
-                }
-
-                clonesTail.forEach(s => track.appendChild(s));
-                cards.forEach(c => track.appendChild(makeSlide(c.cloneNode(true))));
-                clonesHead.forEach(s => track.appendChild(s));
-
-                slides = Array.from(track.children);
-                totalPages = Math.ceil(cards.length / view);
-
-                dotsWrap.innerHTML = '';
-                for (let i = 0; i < totalPages; i++) {
-                    const d = document.createElement('div');
-                    d.className = 'speaker-dot' + (i === 0 ? ' active' : '');
-                    d.dataset.page = i;
-                    dotsWrap.appendChild(d);
-                }
-
-                requestAnimationFrame(() => {
-                    const start = view;
-                    index = start;
-                    translate();
-                    requestAnimationFrame(() => track.style.transition = 'transform .6s ease');
-                });
-                resetTimer();
-            }
-
-            function slideWidth() {
-                return slides[0].getBoundingClientRect().width;
-            }
-
-            function translate() {
-                const offset = -index * slideWidth();
-                track.style.transform = `translateX(${offset}px)`;
-                const page = ((index - view) / view + totalPages) % totalPages;
-                Array.from(dotsWrap.children).forEach((d, i) => d.classList.toggle('active', i === Math.floor(page)));
-            }
-
-            function next() {
-                index += view;
-                translate();
-            }
-
-            function prev() {
-                index -= view;
-                translate();
-            }
-
-            function resetIfCloned() {
-                const headStart = view + cards.length;
-                if (index >= headStart) {
-                    track.style.transition = 'none';
-                    index = view;
-                    translate();
-                    requestAnimationFrame(() => track.style.transition = 'transform .6s ease');
-                } else if (index < view) {
-                    track.style.transition = 'none';
-                    index = view + cards.length - (cards.length % view || view);
-                    translate();
-                    requestAnimationFrame(() => track.style.transition = 'transform .6s ease');
-                }
-            }
-
-            function resetTimer() {
-                clearInterval(timer);
-                timer = setInterval(next, 5000);
-            }
-
-            track.addEventListener('transitionend', resetIfCloned);
-            nextBtn.addEventListener('click', () => { next(); resetTimer(); });
-            prevBtn.addEventListener('click', () => { prev(); resetTimer(); });
-            dotsWrap.addEventListener('click', e => {
-                if (e.target.classList.contains('speaker-dot')) {
-                    const p = parseInt(e.target.dataset.page, 10);
-                    index = view + p * view;
-                    translate();
-                    resetTimer();
-                }
-            });
-
-            let startX = 0, dragging = false;
-            track.addEventListener('pointerdown', e => { dragging = true; startX = e.clientX; track.setPointerCapture(e.pointerId); clearInterval(timer); });
-            track.addEventListener('pointermove', e => {
-                if (!dragging) return;
-                const dx = e.clientX - startX;
-                const base = -index * slideWidth();
-                track.style.transition = 'none';
-                track.style.transform = `translateX(${base + dx}px)`;
-            });
-            track.addEventListener('pointerup', e => {
-                if (!dragging) return;
-                dragging = false;
-                const dx = e.clientX - startX;
-                track.style.transition = 'transform .6s ease';
-                if (Math.abs(dx) > slideWidth()/4) {
-                    if (dx < 0) next(); else prev();
-                } else {
-                    translate();
-                }
-                resetTimer();
-            });
-
-            window.addEventListener('resize', () => {
-                const oldView = view;
-                const oldWidth = slideWidth();
-                const oldIndexInPage = (index - view) % view;
-                build();
-                index = view + Math.max(0, Math.floor(((-parseFloat(track.style.transform.replace('translateX(','').replace('px)','')) || 0) / oldWidth)) - view);
-                index = view + Math.floor((index - view) / oldView) * view + (oldIndexInPage % view);
-                translate();
-            });
-
-            build();
-        });
-    </script>
 </body>
 </html>
